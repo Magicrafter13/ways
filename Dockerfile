@@ -27,4 +27,4 @@ COPY --chown=www-data:www-data . .
 
 # Runtime
 
-CMD ["uwsgi", "--master", "--https", "0.0.0.0:8443,cert/public.crt,cert/private.key", "--wsgi-file", "./app.py", "--need-app"]
+CMD ["./entrypoint.sh"]
