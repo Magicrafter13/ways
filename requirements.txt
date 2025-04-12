@@ -1,0 +1,9 @@
+uwsgi
+flask
+flask-login
+flask_restful
+pyopenssl
+google-api-python-client==2.143.0
+sermonaudio==6.15.2
+python-facebook-api==0.20.0
+cocorum==1.6.0

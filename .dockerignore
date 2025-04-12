@@ -1,0 +1,17 @@
+# Git
+/.git/
+/.gitignore
+
+# Default key generation
+#/cert/public.csr
+#/cert/public.crt
+
+# Docker
+/Dockerfile
+/.dockerignore
+
+# Repo stuff
+/README.md
+
+# Python development
+/venv/

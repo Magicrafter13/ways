@@ -1,0 +1,9 @@
+services:
+  ways:
+    build: .
+    #image: registry.gitlab.matthewrease.net/matthew/ways:latest
+    ports:
+      - "8443:8443"  # Expose port 8443 for your app
+    #environment:
+    #volumes:
+    #  - cert:/app/cert
