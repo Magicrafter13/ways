@@ -2,7 +2,7 @@
 
 import secrets
 
-from icecream import ic
+#from icecream import ic
 from flask import Flask, redirect, render_template, request, session
 from flask_login import login_user, login_required, LoginManager, UserMixin
 from flask_restful import Api, Resource

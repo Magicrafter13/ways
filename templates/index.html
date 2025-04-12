@@ -19,6 +19,7 @@
 			console.log(formData);
 
 			// Submit data
+			Array.from(form.elements).forEach(e => e.disabled = true);
 			const requestOptions = {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
@@ -34,7 +35,22 @@
 		function updatePage(data) {
 			output.innerHTML = JSON.stringify(data);
 			form.title.value = data.title
+			Array.from(form.elements).forEach(e => e.disabled = false);
 		}
+
+		/*
+		 * Set page on page load.
+		 */
+		document.addEventListener('DOMContentLoaded', function() {
+			Array.from(form.elements).forEach(e => e.disabled = true);
+			const requestOptions = {
+				method: 'GET',
+				headers: { 'Content-Type': 'application/json' }
+			};
+			fetch('/details/', requestOptions)
+				.then(response => response.json())
+				.then(data => updatePage(data)); // callback
+		});
 		</script>
 	</body>
 </html>
