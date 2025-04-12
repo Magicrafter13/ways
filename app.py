@@ -2,7 +2,8 @@
 
 import secrets
 
-from flask import Flask, redirect, render_template, request
+from icecream import ic
+from flask import Flask, redirect, render_template, request, session
 from flask_login import login_user, login_required, LoginManager, UserMixin
 from flask_restful import Api, Resource
 
@@ -48,8 +49,18 @@ def user_loader(id):
 #    """Login failure."""
 #    return 'Unauthorized', 401
 
-#class StreamDetailsManager(Resource):
-#    def get(self):
+class StreamDetailsManager(Resource):
+    @login_required
+    def get(self):
+        return details
+    @login_required
+    def put(self):
+        data = request.get_json()
+        if 'title' in data:
+            details['title'] = data['title'].strip()
+        return details
+
+api.add_resource(StreamDetailsManager, '/details/')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -1,5 +1,40 @@
 <html>
 	<body>
 		SUCCESS
+		<form id="form">
+			<label for="title">Title:</label>
+			<input type="text" name="title" />
+			<br />
+			<button type="submit">Update</button>
+		</form>
+		<div id="output"></div>
+		<script>
+		//document.getElementById('form')
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+
+			// Get data
+			console.log(form)
+			const formData = Object.fromEntries(new FormData(form));
+			console.log(formData);
+
+			// Submit data
+			const requestOptions = {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData)
+			};
+			fetch('/details/', requestOptions)
+				.then(response => response.json())
+				.then(data => updatePage(data)); // callback
+		});
+
+		//const output = document.getElementById('output');
+
+		function updatePage(data) {
+			output.innerHTML = JSON.stringify(data);
+			form.title.value = data.title
+		}
+		</script>
 	</body>
 </html>
